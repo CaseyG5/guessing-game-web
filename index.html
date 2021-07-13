@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="tailwind.css">
+
     <title>Child's Guessing Game</title>
 </head>
 <body>
@@ -16,17 +17,15 @@
             </p>
             <p class="text-2xl text-center text-black mb-8">Can you guess it<br>within <strong>7</strong> tries?</p>
 
-            <form class="flex flex-col items-center">
+            <form id="interactive-form" class="flex flex-col items-center">
                 <input id="number-field" type="number" name="user-guess" autocomplete="off" class="w-24 border border-gray-400 rounded-sm">
-                <p id="feedback" class="mb-7 text-green-500 font-bold tracking-wider">YOU GOT IT</p>
+                <p id="feedback" class="mb-7 text-green-500 font-bold tracking-wider">Welcome</p>
                 <button id="guess-button" class="w-20 h-8 rounded-full border border-gray-400 bg-white font-semibold outline-none">Guess</button>
             </form>
-
         </div>
-
-
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

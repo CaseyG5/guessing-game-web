@@ -1,25 +1,64 @@
+const form = document.getElementById('interactive-form');
 const entryField = document.getElementById('number-field');
 const feedbackMsg = document.getElementById('feedback');
 const guessBtn = document.getElementById('guess-button');
 
+main();
 
-const randomInt = getRandomInt(100);
-let numGuesses = 0;
+function main() {
+    const houseNumber = getRandomInt(100);
+    let playerGuess;
+    let lastGuessColor = "text-green-500";
+    let numGuesses = 0;
 
-guessBtn.addEventListener('click', (event) => {
-    event.preventDefault();
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-    // retrieve integer (guess) from number field
-    // increment number of guesses
-    // compare it to our number
-    // if too low then show 'too low' in blue
-    // else if too high then show 'too high' in red
-    // else show 'you got it' in green and
-        // if tries <= 7 blow the confetti
-    // disable or hide guess button
-});
+        playerGuess = entryField.value;
+        numGuesses++;
 
+        if(playerGuess < houseNumber) {
+            changeMessage(feedbackMsg, "Too Low", lastGuessColor, "text-blue-500");
+            lastGuessColor = "text-blue-500";
+        }
+        else if(playerGuess > houseNumber) {
+            changeMessage(feedbackMsg, "Too High", lastGuessColor, "text-red-500");
+            lastGuessColor = "text-red-500";
+        }
+        else {
+            changeMessage(feedbackMsg, "You Got It", lastGuessColor, "text-green-500");
+            if(numGuesses <= 7) {
+                feedbackMsg.innerText += ` in ${numGuesses} Tries!`;
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: {y: 0.6 }
+                });
+            }
+            guessBtn.classList.add( 'hidden' );
+        }
+    });
+}
 
+/**
+ *
+ * @param max
+ * @returns {number}
+ */
 function getRandomInt(max) {
     return Math.floor(Math.random() * (max + 1) ) - 1;  // make max as a possibility too
+}
+
+/**
+ *
+ * @param domMsgObj
+ * @param text
+ * @param fromColor
+ * @param toColor
+ */
+function changeMessage(domMsgObj, text, fromColor, toColor) {
+    if(fromColor === toColor) return;        // if same type of guess, e.g. still too high, then no change needed
+    domMsgObj.classList.remove(`${fromColor}`);
+    domMsgObj.classList.add(`${toColor}`);
+    domMsgObj.innerText = text;
 }
