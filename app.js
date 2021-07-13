@@ -18,17 +18,17 @@ function main() {
         numGuesses++;
 
         if(playerGuess < houseNumber) {
-            changeMessage(feedbackMsg, "Too Low", lastGuessColor, "text-blue-500");
+            changeMessage(feedbackMsg, "Number Too Low", lastGuessColor, "text-blue-500");
             lastGuessColor = "text-blue-500";
         }
         else if(playerGuess > houseNumber) {
-            changeMessage(feedbackMsg, "Too High", lastGuessColor, "text-red-500");
+            changeMessage(feedbackMsg, "Number Too High", lastGuessColor, "text-red-500");
             lastGuessColor = "text-red-500";
         }
         else {
-            changeMessage(feedbackMsg, "You Got It", lastGuessColor, "text-green-500");
+            changeMessage(feedbackMsg, "Just Right", lastGuessColor, "text-green-500");
             if(numGuesses <= 7) {
-                feedbackMsg.innerText += ` in ${numGuesses} Tries!`;
+                feedbackMsg.innerText += ` and only ${numGuesses} Tries!`;     // yes, "1 tries" is not grammatically correct but that's ok here
                 confetti({
                     particleCount: 100,
                     spread: 70,
