@@ -6,7 +6,7 @@ This mini web app should include a main function that takes no argument. When th
 a random number between 1 and 100 shall be "chosen" by the computer.  The program should ask the user to
 guess the number the computer picked, and every time they submit a guess, it should give one of the
 following feedback messages: "Number too high", "Number Too low", or "Just Right".
-If/when they guess correctly, the program shall display "Just Right" and then stops.
+If/when they guess correctly, the program shall display "Just Right" and then stop.
 
 ## Solution
 ### Method:   
@@ -16,7 +16,7 @@ If/when they guess correctly, the program shall display "Just Right" and then st
 generated using, which I call the "House Number" (as in a gambling establishment).
 - Then using conditional statements display one of the messages in the problem statement, depending on whether the player's
 guess was too low, too high, or correct.  I decided I wanted to color the text of this feedback
-blue, red, and green, respectively.
+blue, red, and green, respectively, so that players able to see color would have an additional visual cue.
 - When the player makes the correct guess, the "Guess" button is removed because the game is
 over; they can reload the page to play again.
 - If the player guesses correctly within 7 attempts, then the number of guesses is displayed
